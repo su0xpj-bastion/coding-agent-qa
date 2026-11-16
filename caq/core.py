@@ -44,6 +44,8 @@ def prepare(task: dict) -> Path:
     ws = Path(tempfile.mkdtemp(prefix=f"caq-{task['id']}-"))
     shutil.copytree(task["dir"] / "repo", ws, dirs_exist_ok=True)
     _git(ws, "init", "-q", "-b", "main")
+    # interpreter and test-runner droppings are not the agent's changes
+    (ws / ".git" / "info" / "exclude").write_text("__pycache__/\n*.pyc\n.pytest_cache/\n")
     _git(ws, "-c", "user.name=caq", "-c", "user.email=caq@example.test", "add", "-A")
     _git(ws, "-c", "user.name=caq", "-c", "user.email=caq@example.test", "commit", "-qm", "task start")
     return ws
