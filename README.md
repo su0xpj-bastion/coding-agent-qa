@@ -1,5 +1,7 @@
 # coding-agent-qa
 
+> **Moved.** This project now lives in [support-casebook/suites/coding-agent-qa](https://github.com/su0xpj-bastion/support-casebook/tree/main/suites/coding-agent-qa), where it is maintained and tested. This repository is archived and read-only.
+
 QA and support tooling for **AI coding agents** (Claude Code, Codex CLI, Muse Code, or any CLI that takes a prompt and edits a repo). It runs an agent on a suite of seeded-bug tasks, grades what it left on disk with **hidden tests and change rules**, decides **GO / INCONCLUSIVE / NO-GO** across repeated runs (because agents are not deterministic), and when a run fails, says **which layer failed** (the agent harness, the orchestration around the model, the customer's environment, or the model's change) and writes the escalation packet a support engineer would send.
 
 ```bash
